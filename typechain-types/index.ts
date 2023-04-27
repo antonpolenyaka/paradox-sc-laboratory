@@ -28,8 +28,12 @@ export type { IERC165 } from "./@openzeppelin/contracts/utils/introspection/IERC
 export { IERC165__factory } from "./factories/@openzeppelin/contracts/utils/introspection/IERC165__factory";
 export type { Lock } from "./contracts/Lock";
 export { Lock__factory } from "./factories/contracts/Lock__factory";
+export type { USDT } from "./contracts/Mocks/USDT";
+export { USDT__factory } from "./factories/contracts/Mocks/USDT__factory";
 export type { ParadoxToken } from "./contracts/Paradox.sol/ParadoxToken";
 export { ParadoxToken__factory } from "./factories/contracts/Paradox.sol/ParadoxToken__factory";
+export type { ParadoxTimelock } from "./contracts/ParadoxTimelock";
+export { ParadoxTimelock__factory } from "./factories/contracts/ParadoxTimelock__factory";
 export type { Parapad } from "./contracts/Parapad/parapad.sol/Parapad";
 export { Parapad__factory } from "./factories/contracts/Parapad/parapad.sol/Parapad__factory";
 export type { IPARA } from "./contracts/StakePool.sol/IPARA";
