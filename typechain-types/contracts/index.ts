@@ -3,8 +3,6 @@
 /* eslint-disable */
 import type * as mocks from "./Mocks";
 export type { mocks };
-import type * as paradoxSol from "./Paradox.sol";
-export type { paradoxSol };
 import type * as parapad from "./Parapad";
 export type { parapad };
 import type * as stakePoolSol from "./StakePool.sol";

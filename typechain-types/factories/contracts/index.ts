@@ -2,7 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export * as mocks from "./Mocks";
-export * as paradoxSol from "./Paradox.sol";
 export * as parapad from "./Parapad";
 export * as stakePoolSol from "./StakePool.sol";
 export { Lock__factory } from "./Lock__factory";

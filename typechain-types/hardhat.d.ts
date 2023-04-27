@@ -61,10 +61,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.USDT__factory>;
     getContractFactory(
-      name: "ParadoxToken",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.ParadoxToken__factory>;
-    getContractFactory(
       name: "ParadoxTimelock",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ParadoxTimelock__factory>;
@@ -149,11 +145,6 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.USDT>;
-    getContractAt(
-      name: "ParadoxToken",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.ParadoxToken>;
     getContractAt(
       name: "ParadoxTimelock",
       address: string,
