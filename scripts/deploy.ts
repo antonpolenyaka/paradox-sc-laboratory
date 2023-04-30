@@ -37,7 +37,7 @@ async function main() {
   // StakePool
   const StakePool = await ethers.getContractFactory("StakePool");
   // address _para, uint256 _rewardsPerSecond, address _rewardsPoolAddress
-  const para = parapad.address;
+  const para = paradoxToken.address;
   const rewardsPerSecond = BigInt((5000 / (24 * 60 * 60)) * 10 ** 18);
   const rewardsPoolAddress = rewardsPool.address;
   const stakePool = await StakePool.deploy(para, rewardsPerSecond, rewardsPoolAddress);
