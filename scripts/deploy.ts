@@ -40,7 +40,7 @@ async function main() {
   const para = paradoxToken.address;
   const rewardsPerSecond = BigInt((5000 / (24 * 60 * 60)) * 10 ** 18);
   const rewardsPoolAddress = rewardsPool.address;
-  const stakePool = await StakePool.deploy(para, rewardsPerSecond, rewardsPoolAddress);
+  const stakePool = await StakePool.deploy(para, rewardsPerSecond, rewardsPoolAddress, 0, 0, false, false);
   await stakePool.deployed();
   console.log(`StakePool deployed to ${stakePool.address}`);
 

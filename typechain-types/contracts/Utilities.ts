@@ -30,12 +30,16 @@ import type {
 export interface UtilitiesInterface extends utils.Interface {
   functions: {
     "DEFAULT_ADMIN_ROLE()": FunctionFragment;
+    "burnFee()": FunctionFragment;
+    "burnFeeEnabled()": FunctionFragment;
     "dailyData(uint256)": FunctionFragment;
     "getRoleAdmin(bytes32)": FunctionFragment;
     "grantRole(bytes32,address)": FunctionFragment;
     "hasRole(bytes32,address)": FunctionFragment;
     "renounceRole(bytes32,address)": FunctionFragment;
     "revokeRole(bytes32,address)": FunctionFragment;
+    "rewardFee()": FunctionFragment;
+    "rewardFeeEnabled()": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "userPositions(address)": FunctionFragment;
     "virtualPool()": FunctionFragment;
@@ -44,12 +48,16 @@ export interface UtilitiesInterface extends utils.Interface {
   getFunction(
     nameOrSignatureOrTopic:
       | "DEFAULT_ADMIN_ROLE"
+      | "burnFee"
+      | "burnFeeEnabled"
       | "dailyData"
       | "getRoleAdmin"
       | "grantRole"
       | "hasRole"
       | "renounceRole"
       | "revokeRole"
+      | "rewardFee"
+      | "rewardFeeEnabled"
       | "supportsInterface"
       | "userPositions"
       | "virtualPool"
@@ -57,6 +65,11 @@ export interface UtilitiesInterface extends utils.Interface {
 
   encodeFunctionData(
     functionFragment: "DEFAULT_ADMIN_ROLE",
+    values?: undefined
+  ): string;
+  encodeFunctionData(functionFragment: "burnFee", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "burnFeeEnabled",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -83,6 +96,11 @@ export interface UtilitiesInterface extends utils.Interface {
     functionFragment: "revokeRole",
     values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
   ): string;
+  encodeFunctionData(functionFragment: "rewardFee", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "rewardFeeEnabled",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "supportsInterface",
     values: [PromiseOrValue<BytesLike>]
@@ -100,6 +118,11 @@ export interface UtilitiesInterface extends utils.Interface {
     functionFragment: "DEFAULT_ADMIN_ROLE",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "burnFee", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "burnFeeEnabled",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "dailyData", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "getRoleAdmin",
@@ -112,6 +135,11 @@ export interface UtilitiesInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "revokeRole", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "rewardFee", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "rewardFeeEnabled",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "supportsInterface",
     data: BytesLike
@@ -234,6 +262,10 @@ export interface Utilities extends BaseContract {
   functions: {
     DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<[string]>;
 
+    burnFee(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    burnFeeEnabled(overrides?: CallOverrides): Promise<[boolean]>;
+
     dailyData(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -273,6 +305,10 @@ export interface Utilities extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    rewardFee(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    rewardFeeEnabled(overrides?: CallOverrides): Promise<[boolean]>;
+
     supportsInterface(
       interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
@@ -303,6 +339,10 @@ export interface Utilities extends BaseContract {
   };
 
   DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
+
+  burnFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+  burnFeeEnabled(overrides?: CallOverrides): Promise<boolean>;
 
   dailyData(
     arg0: PromiseOrValue<BigNumberish>,
@@ -343,6 +383,10 @@ export interface Utilities extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
+  rewardFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+  rewardFeeEnabled(overrides?: CallOverrides): Promise<boolean>;
+
   supportsInterface(
     interfaceId: PromiseOrValue<BytesLike>,
     overrides?: CallOverrides
@@ -373,6 +417,10 @@ export interface Utilities extends BaseContract {
 
   callStatic: {
     DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
+
+    burnFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+    burnFeeEnabled(overrides?: CallOverrides): Promise<boolean>;
 
     dailyData(
       arg0: PromiseOrValue<BigNumberish>,
@@ -412,6 +460,10 @@ export interface Utilities extends BaseContract {
       account: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<void>;
+
+    rewardFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+    rewardFeeEnabled(overrides?: CallOverrides): Promise<boolean>;
 
     supportsInterface(
       interfaceId: PromiseOrValue<BytesLike>,
@@ -510,6 +562,10 @@ export interface Utilities extends BaseContract {
   estimateGas: {
     DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
 
+    burnFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+    burnFeeEnabled(overrides?: CallOverrides): Promise<BigNumber>;
+
     dailyData(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -543,6 +599,10 @@ export interface Utilities extends BaseContract {
       account: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
+
+    rewardFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+    rewardFeeEnabled(overrides?: CallOverrides): Promise<BigNumber>;
 
     supportsInterface(
       interfaceId: PromiseOrValue<BytesLike>,
@@ -562,6 +622,10 @@ export interface Utilities extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    burnFee(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    burnFeeEnabled(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     dailyData(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -595,6 +659,10 @@ export interface Utilities extends BaseContract {
       account: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
+
+    rewardFee(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    rewardFeeEnabled(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     supportsInterface(
       interfaceId: PromiseOrValue<BytesLike>,

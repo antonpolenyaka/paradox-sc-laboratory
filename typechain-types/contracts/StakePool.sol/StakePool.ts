@@ -76,6 +76,8 @@ export declare namespace Utilities {
 export interface StakePoolInterface extends utils.Interface {
   functions: {
     "DEFAULT_ADMIN_ROLE()": FunctionFragment;
+    "burnFee()": FunctionFragment;
+    "burnFeeEnabled()": FunctionFragment;
     "calcPayoutRewards(uint256,uint256,uint256,uint256)": FunctionFragment;
     "dailyData(uint256)": FunctionFragment;
     "endStake(uint256)": FunctionFragment;
@@ -86,6 +88,12 @@ export interface StakePoolInterface extends utils.Interface {
     "hasRole(bytes32,address)": FunctionFragment;
     "renounceRole(bytes32,address)": FunctionFragment;
     "revokeRole(bytes32,address)": FunctionFragment;
+    "rewardFee()": FunctionFragment;
+    "rewardFeeEnabled()": FunctionFragment;
+    "setBurnEnabled(bool)": FunctionFragment;
+    "setBurnFee(uint256)": FunctionFragment;
+    "setRewardEnabled(bool)": FunctionFragment;
+    "setRewardFee(uint256)": FunctionFragment;
     "stake(uint256,uint256)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "userPositions(address)": FunctionFragment;
@@ -95,6 +103,8 @@ export interface StakePoolInterface extends utils.Interface {
   getFunction(
     nameOrSignatureOrTopic:
       | "DEFAULT_ADMIN_ROLE"
+      | "burnFee"
+      | "burnFeeEnabled"
       | "calcPayoutRewards"
       | "dailyData"
       | "endStake"
@@ -105,6 +115,12 @@ export interface StakePoolInterface extends utils.Interface {
       | "hasRole"
       | "renounceRole"
       | "revokeRole"
+      | "rewardFee"
+      | "rewardFeeEnabled"
+      | "setBurnEnabled"
+      | "setBurnFee"
+      | "setRewardEnabled"
+      | "setRewardFee"
       | "stake"
       | "supportsInterface"
       | "userPositions"
@@ -113,6 +129,11 @@ export interface StakePoolInterface extends utils.Interface {
 
   encodeFunctionData(
     functionFragment: "DEFAULT_ADMIN_ROLE",
+    values?: undefined
+  ): string;
+  encodeFunctionData(functionFragment: "burnFee", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "burnFeeEnabled",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -160,6 +181,27 @@ export interface StakePoolInterface extends utils.Interface {
     functionFragment: "revokeRole",
     values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
   ): string;
+  encodeFunctionData(functionFragment: "rewardFee", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "rewardFeeEnabled",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setBurnEnabled",
+    values: [PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setBurnFee",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setRewardEnabled",
+    values: [PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setRewardFee",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
   encodeFunctionData(
     functionFragment: "stake",
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>]
@@ -179,6 +221,11 @@ export interface StakePoolInterface extends utils.Interface {
 
   decodeFunctionResult(
     functionFragment: "DEFAULT_ADMIN_ROLE",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "burnFee", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "burnFeeEnabled",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -206,6 +253,24 @@ export interface StakePoolInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "revokeRole", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "rewardFee", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "rewardFeeEnabled",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setBurnEnabled",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "setBurnFee", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "setRewardEnabled",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setRewardFee",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "stake", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "supportsInterface",
@@ -329,6 +394,10 @@ export interface StakePool extends BaseContract {
   functions: {
     DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<[string]>;
 
+    burnFee(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    burnFeeEnabled(overrides?: CallOverrides): Promise<[boolean]>;
+
     calcPayoutRewards(
       stakeShares: PromiseOrValue<BigNumberish>,
       beginDay: PromiseOrValue<BigNumberish>,
@@ -394,6 +463,30 @@ export interface StakePool extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    rewardFee(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    rewardFeeEnabled(overrides?: CallOverrides): Promise<[boolean]>;
+
+    setBurnEnabled(
+      _enabled: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setBurnFee(
+      _fee: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setRewardEnabled(
+      _enabled: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setRewardFee(
+      _fee: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
     stake(
       newStakedParas: PromiseOrValue<BigNumberish>,
       newStakedDays: PromiseOrValue<BigNumberish>,
@@ -430,6 +523,10 @@ export interface StakePool extends BaseContract {
   };
 
   DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
+
+  burnFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+  burnFeeEnabled(overrides?: CallOverrides): Promise<boolean>;
 
   calcPayoutRewards(
     stakeShares: PromiseOrValue<BigNumberish>,
@@ -496,6 +593,30 @@ export interface StakePool extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
+  rewardFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+  rewardFeeEnabled(overrides?: CallOverrides): Promise<boolean>;
+
+  setBurnEnabled(
+    _enabled: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setBurnFee(
+    _fee: PromiseOrValue<BigNumberish>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setRewardEnabled(
+    _enabled: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setRewardFee(
+    _fee: PromiseOrValue<BigNumberish>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
   stake(
     newStakedParas: PromiseOrValue<BigNumberish>,
     newStakedDays: PromiseOrValue<BigNumberish>,
@@ -532,6 +653,10 @@ export interface StakePool extends BaseContract {
 
   callStatic: {
     DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
+
+    burnFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+    burnFeeEnabled(overrides?: CallOverrides): Promise<boolean>;
 
     calcPayoutRewards(
       stakeShares: PromiseOrValue<BigNumberish>,
@@ -595,6 +720,30 @@ export interface StakePool extends BaseContract {
     revokeRole(
       role: PromiseOrValue<BytesLike>,
       account: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    rewardFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+    rewardFeeEnabled(overrides?: CallOverrides): Promise<boolean>;
+
+    setBurnEnabled(
+      _enabled: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setBurnFee(
+      _fee: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setRewardEnabled(
+      _enabled: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setRewardFee(
+      _fee: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -701,6 +850,10 @@ export interface StakePool extends BaseContract {
   estimateGas: {
     DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
 
+    burnFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+    burnFeeEnabled(overrides?: CallOverrides): Promise<BigNumber>;
+
     calcPayoutRewards(
       stakeShares: PromiseOrValue<BigNumberish>,
       beginDay: PromiseOrValue<BigNumberish>,
@@ -756,6 +909,30 @@ export interface StakePool extends BaseContract {
     revokeRole(
       role: PromiseOrValue<BytesLike>,
       account: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    rewardFee(overrides?: CallOverrides): Promise<BigNumber>;
+
+    rewardFeeEnabled(overrides?: CallOverrides): Promise<BigNumber>;
+
+    setBurnEnabled(
+      _enabled: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setBurnFee(
+      _fee: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setRewardEnabled(
+      _enabled: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setRewardFee(
+      _fee: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -783,6 +960,10 @@ export interface StakePool extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    burnFee(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    burnFeeEnabled(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     calcPayoutRewards(
       stakeShares: PromiseOrValue<BigNumberish>,
       beginDay: PromiseOrValue<BigNumberish>,
@@ -838,6 +1019,30 @@ export interface StakePool extends BaseContract {
     revokeRole(
       role: PromiseOrValue<BytesLike>,
       account: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    rewardFee(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    rewardFeeEnabled(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    setBurnEnabled(
+      _enabled: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setBurnFee(
+      _fee: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setRewardEnabled(
+      _enabled: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setRewardFee(
+      _fee: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

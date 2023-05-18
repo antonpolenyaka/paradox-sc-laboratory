@@ -30,7 +30,7 @@
     "test": "npx hardhat test",
     "deploy": "npx hardhat run scripts/deploy.ts",
     "deploc": "npx hardhat run scripts/deploy.ts --network localhost",
-    "blockchain": "npx hardhat node"
+    "bc": "npx hardhat node"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.3",
